@@ -1,36 +1,97 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# AVN Holidays — Boutique Travel Concierge
 
-## Getting Started
+Editorial-luxe travel concierge website for **AVN Holiday Networks**, Mysore. Built with Next.js 15+ (App Router), TypeScript, Tailwind CSS v4, and Framer Motion.
 
-First, run the development server:
+> *Your personal travel concierge. With insider rates.*
+
+## Quick start
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev      # http://localhost:3000
+npm run build    # production build
+npm start        # serve production build
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Deploy to Vercel
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1. Push this repository to GitHub
+2. Import the project at [vercel.com](https://vercel.com)
+3. Framework preset: **Next.js** (zero config)
+4. Set environment variable `NEXT_PUBLIC_SITE_URL` if domain differs from default
+5. Deploy
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+The enquiry API (`/api/enquiry`) currently logs to server console. Wire to email (Resend, SendGrid) or CRM in production.
 
-## Learn More
+## Project structure
 
-To learn more about Next.js, take a look at the following resources:
+```
+src/
+  app/              # Pages (App Router)
+  components/       # UI, layout, home sections, forms
+  data/             # Typed content layer (CMS-ready)
+  lib/              # SEO helpers, utilities
+public/images/      # Curated destination photography
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Design tokens
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Defined in `src/app/globals.css` via Tailwind v4 `@theme`:
 
-## Deploy on Vercel
+- `--color-pine` — primary brand green
+- `--color-sand` — warm ivory background
+- `--color-brass` — accent / hairline detail
+- `--color-ink` — body text
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Fonts: Cormorant Garamond (display), DM Sans (body), Caveat (signature, sparingly).
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Image management
+
+All image references live in `src/data/images.ts`. See **IMAGES.md** for the full manifest, sources, and attribution.
+
+Re-download stock images:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File scripts/download-images.ps1
+```
+
+---
+
+## PLACEHOLDERS checklist
+
+Items marked placeholder need client-provided content before launch:
+
+### Photography
+- [ ] Official hotel/resort photos for all 16 named properties (currently representative placeholders)
+- [ ] Team headshots for Mysore HQ and resident reps (Bangalore, Kolkata, Patna)
+- [ ] Location-accurate replacements for wildlife/forest fallbacks (Kabini, Thekkady, Wayanad)
+
+### Content
+- [ ] Day-wise itinerary details for all 11 journey packages (currently placeholder text)
+- [ ] Complete inclusions/exclusions with pricing where applicable
+- [ ] Car rental rate cards and fleet specifications
+- [ ] Additional guest testimonials
+- [ ] WhatsApp business number and click-to-chat link
+- [ ] Social media URLs (Facebook, Instagram, etc.)
+- [ ] Founder/company story refinements and establishment year confirmation
+
+### Integrations
+- [ ] Enquiry form → email notification (Resend/SendGrid) or CRM
+- [ ] Google Analytics / conversion tracking
+- [ ] Production domain (`siteConfig.url` in `src/data/contact.ts`)
+
+### Legal
+- [ ] Privacy policy page (if collecting form data)
+- [ ] Terms of service
+
+---
+
+## Documentation
+
+- **DESIGN_RATIONALE.md** — strategic and aesthetic decisions
+- **IMAGES.md** — image manifest with sources and licenses
+
+## Contact (AVN)
+
+AVN Holiday Networks · Mysore 570 008  
++91 90196 01010 · info@avnholidays.com
