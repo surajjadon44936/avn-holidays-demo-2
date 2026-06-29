@@ -25,6 +25,19 @@ npm start        # serve production build
 
 If you see a Vercel `404: NOT_FOUND` page (not the site’s own 404), the project has no successful production deployment — check **Deployments** in the Vercel dashboard for build errors, and confirm the production branch matches your Git branch.
 
+### Vercel 404 after a successful build
+
+If the build log shows **Ready** but every URL returns `404: NOT_FOUND` with zero runtime logs:
+
+1. **Settings → Build & Deployment → Framework Settings**
+   - Framework Preset: **Next.js** (not “Other”)
+   - **Output Directory:** leave **empty** — delete `.next` if overridden
+   - Build Command: `npm run build` (uses webpack, not Turbopack)
+2. **Redeploy** the latest commit with **Clear build cache** enabled
+3. If still broken: delete the Vercel project and re-import from GitHub (routing manifest corruption)
+
+Test static delivery: `https://your-app.vercel.app/health.txt` should return `ok`.
+
 The enquiry API (`/api/enquiry`) currently logs to server console. Wire to email (Resend, SendGrid) or CRM in production.
 
 ## Project structure
