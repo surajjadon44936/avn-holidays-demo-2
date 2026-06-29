@@ -15,11 +15,15 @@ npm start        # serve production build
 
 ## Deploy to Vercel
 
-1. Push this repository to GitHub
-2. Import the project at [vercel.com](https://vercel.com)
-3. Framework preset: **Next.js** (zero config)
-4. Set environment variable `NEXT_PUBLIC_SITE_URL` if domain differs from default
-5. Deploy
+1. Push this repository to GitHub (production branch: **`main`** or **`master`**)
+2. Import the project at [vercel.com](https://vercel.com) → **Add New Project** → select the repo
+3. Framework preset: **Next.js** (auto-detected — do not set a custom output directory)
+4. **Production Branch:** set to `main` (or `master` if that is your default branch)
+5. Root Directory: `.` (repository root)
+6. Build Command: `npm run build` (default)
+7. Deploy
+
+If you see a Vercel `404: NOT_FOUND` page (not the site’s own 404), the project has no successful production deployment — check **Deployments** in the Vercel dashboard for build errors, and confirm the production branch matches your Git branch.
 
 The enquiry API (`/api/enquiry`) currently logs to server console. Wire to email (Resend, SendGrid) or CRM in production.
 
